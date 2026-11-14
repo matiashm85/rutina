@@ -1,0 +1,2631 @@
+{
+ "_nota": "Sesiones A/B/C de la rutina actual (6 patrones). patron y categoria usan los 6 patrones del método: sentadilla, bisagra, empuje, tiron, una_pierna, core_brazos. Cada ítem de sesión trae series, min, max y unidad (reps o s) además del texto series_reps; por_lado indica si es por pierna o por lado. ejercicios incluye también los de la rutina anterior de 2 semanas y 10 alternativas sin figura tomadas de los slides del video, con tipo (compuesto, aislamiento, core, cargada) y equipo (ver gimnasio/equipos.md; lista vacía = peso corporal). fig = parámetros de la figura SVG de la página (cinemática inversa). por_lado y rx en un ejercicio son su prescripción propia cuando el generador lo pone en una sesión. equipo_disponible es la lista de equipos del gimnasio que usa el generador. En cardio_largo, seg = [minutos, zona (1 suave, 2 zona 2, 4 fuerte), etiqueta opcional].",
+ "sesiones": {
+  "A": {
+   "dia": "Lunes",
+   "foco": "Barra · jalón · búlgara",
+   "superseries": [
+    [
+     {
+      "codigo": "A1",
+      "ejercicio": "sq_smith",
+      "patron": "sentadilla",
+      "series": 3,
+      "min": 8,
+      "max": 10,
+      "unidad": "reps",
+      "series_reps": "3 × 8–10"
+     },
+     {
+      "codigo": "A2",
+      "ejercicio": "jalon",
+      "patron": "tiron",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     }
+    ],
+    [
+     {
+      "codigo": "B1",
+      "ejercicio": "rdl_bar",
+      "patron": "bisagra",
+      "series": 3,
+      "min": 8,
+      "max": 10,
+      "unidad": "reps",
+      "series_reps": "3 × 8–10"
+     },
+     {
+      "codigo": "B2",
+      "ejercicio": "press_db_plano",
+      "patron": "empuje",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 8–12"
+     }
+    ],
+    [
+     {
+      "codigo": "C1",
+      "ejercicio": "bulgara",
+      "patron": "una_pierna",
+      "series": 3,
+      "min": 8,
+      "max": 10,
+      "unidad": "reps",
+      "por_lado": "pierna",
+      "series_reps": "3 × 8–10 c/p"
+     },
+     {
+      "codigo": "C2",
+      "ejercicio": "pallof",
+      "patron": "core_brazos",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "por_lado": "lado",
+      "series_reps": "3 × 8–12 c/l"
+     }
+    ]
+   ]
+  },
+  "B": {
+   "dia": "Miércoles",
+   "foco": "Goblet · polea · cargada",
+   "superseries": [
+    [
+     {
+      "codigo": "A1",
+      "ejercicio": "goblet",
+      "patron": "sentadilla",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     },
+     {
+      "codigo": "A2",
+      "ejercicio": "remo_baja",
+      "patron": "tiron",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     }
+    ],
+    [
+     {
+      "codigo": "B1",
+      "ejercicio": "hip_thrust",
+      "patron": "bisagra",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 8–12"
+     },
+     {
+      "codigo": "B2",
+      "ejercicio": "press_hombro_db",
+      "patron": "empuje",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 8–12"
+     }
+    ],
+    [
+     {
+      "codigo": "C1",
+      "ejercicio": "zancada",
+      "patron": "una_pierna",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "por_lado": "pierna",
+      "series_reps": "3 × 8–12 c/p"
+     },
+     {
+      "codigo": "C2",
+      "ejercicio": "farmer",
+      "patron": "core_brazos",
+      "series": 3,
+      "min": 40,
+      "max": 40,
+      "unidad": "s",
+      "series_reps": "3 × 40 s"
+     }
+    ]
+   ]
+  },
+  "C": {
+   "dia": "Viernes",
+   "foco": "Mancuernas · inclinado · brazos",
+   "superseries": [
+    [
+     {
+      "codigo": "A1",
+      "ejercicio": "heels_up",
+      "patron": "sentadilla",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     },
+     {
+      "codigo": "A2",
+      "ejercicio": "remo_pecho",
+      "patron": "tiron",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     }
+    ],
+    [
+     {
+      "codigo": "B1",
+      "ejercicio": "rdl_db",
+      "patron": "bisagra",
+      "series": 3,
+      "min": 10,
+      "max": 12,
+      "unidad": "reps",
+      "series_reps": "3 × 10–12"
+     },
+     {
+      "codigo": "B2",
+      "ejercicio": "press_smith_incl",
+      "patron": "empuje",
+      "series": 3,
+      "min": 8,
+      "max": 10,
+      "unidad": "reps",
+      "series_reps": "3 × 8–10"
+     }
+    ],
+    [
+     {
+      "codigo": "C1",
+      "ejercicio": "stepup",
+      "patron": "una_pierna",
+      "series": 3,
+      "min": 8,
+      "max": 12,
+      "unidad": "reps",
+      "por_lado": "pierna",
+      "series_reps": "3 × 8–12 c/p"
+     },
+     {
+      "codigo": "C2",
+      "ejercicio": "deadbug",
+      "patron": "core_brazos",
+      "series": 3,
+      "min": 8,
+      "max": 10,
+      "unidad": "reps",
+      "por_lado": "lado",
+      "series_reps": "3 × 8–10 c/l"
+     }
+    ]
+   ],
+   "opcional": [
+    {
+     "codigo": "D1",
+     "ejercicio": "curl_maq",
+     "patron": "core_brazos",
+     "series": 2,
+     "min": 10,
+     "max": 12,
+     "unidad": "reps",
+     "series_reps": "2 × 10–12"
+    },
+    {
+     "codigo": "D2",
+     "ejercicio": "triceps_maq",
+     "patron": "core_brazos",
+     "series": 2,
+     "min": 10,
+     "max": 12,
+     "unidad": "reps",
+     "series_reps": "2 × 10–12"
+    }
+   ]
+  }
+ },
+ "cardio_largo": {
+  "T1": {
+   "w": 1,
+   "day": "Martes",
+   "name": "Zona 2 continuo",
+   "equip": "Elíptica",
+   "seg": [
+    [
+     5,
+     1
+    ],
+    [
+     35,
+     2
+    ],
+    [
+     5,
+     1
+    ]
+   ],
+   "desc": "Ritmo constante y cómodo. Es la base aeróbica."
+  },
+  "S1": {
+   "w": 1,
+   "day": "Sábado",
+   "name": "4 × 4 min",
+   "equip": "Elíptica",
+   "seg": [
+    [
+     10,
+     1
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     3,
+     1
+    ],
+    [
+     4,
+     4
+    ],
+    [
+     15,
+     1
+    ]
+   ],
+   "desc": "4 bloques de 4 min fuertes con 3 min suaves entre cada uno."
+  },
+  "T2": {
+   "w": 2,
+   "day": "Martes",
+   "name": "Zona 2 combinado",
+   "equip": "Elíptica 25 + cinta inclinada 25",
+   "seg": [
+    [
+     5,
+     1,
+     "Elíptica"
+    ],
+    [
+     20,
+     2,
+     "Elíptica"
+    ],
+    [
+     25,
+     2,
+     "Cinta inclinada 8–12%"
+    ]
+   ],
+   "desc": "En la cinta: caminata rápida con inclinación de 8–12%, sin agarrarte."
+  },
+  "S2": {
+   "w": 2,
+   "day": "Sábado",
+   "name": "8 × 1 min",
+   "equip": "Elíptica",
+   "seg": [
+    [
+     10,
+     1
+    ],
+    [
+     6,
+     2
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     2,
+     1
+    ],
+    [
+     1,
+     4
+    ],
+    [
+     12,
+     1
+    ]
+   ],
+   "desc": "8 picos de 1 min fuerte con 2 min suaves. Más corto e intenso que el 4 × 4."
+  }
+ },
+ "equipo_disponible": [
+  "smith",
+  "polea",
+  "step",
+  "maquina_press_pecho",
+  "maquina_press_hombro",
+  "maquina_jalon",
+  "maquina_extension_cuadriceps",
+  "maquina_curl_femoral",
+  "maquina_curl_biceps",
+  "maquina_triceps",
+  "estacion_dominadas_fondos",
+  "banco_plano",
+  "banco_regulable",
+  "mancuernas",
+  "barra",
+  "barra_ez",
+  "discos"
+ ],
+ "ejercicios": {
+  "sq_smith": {
+   "n": "Sentadilla en Smith",
+   "categoria": "sentadilla",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith"
+   ],
+   "cue": "Barra sobre la parte alta de la espalda, pies un poco adelante. Bajá hasta que el muslo quede paralelo al piso y subí empujando con todo el pie.",
+   "fig": {
+    "fx": [
+     [
+      "rail",
+      74
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       76,
+       21,
+       "d"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      62,
+      74
+     ],
+     "t": 40,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       49,
+       "d"
+      ]
+     ],
+     "h": "plate"
+    }
+   },
+   "foto": "gimnasio/fotos/smith.jpg"
+  },
+  "goblet": {
+   "n": "Sentadilla goblet",
+   "categoria": "sentadilla",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Mancuerna vertical contra el pecho, talones en el piso. Bajá con el torso erguido y los codos entre las rodillas.",
+   "fig": {
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       88,
+       27,
+       "d"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      64,
+      76
+     ],
+     "t": 20,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       86,
+       52,
+       "d"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "rdl_bar": {
+   "n": "Peso muerto rumano con barra",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "barra"
+   ],
+   "cue": "Rodillas apenas flexionadas. Llevá la cadera hacia atrás con la barra pegada a las piernas hasta media canilla, espalda recta, y volvé apretando glúteos.",
+   "fig": {
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       54,
+       "f"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      64,
+      56
+     ],
+     "t": 62,
+     "feet": [
+      [
+       82,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       88,
+       77,
+       "b"
+      ]
+     ],
+     "h": "plate"
+    }
+   }
+  },
+  "rdl_smith": {
+   "n": "Peso muerto rumano en Smith",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith"
+   ],
+   "cue": "Igual que con barra libre, pero la barra va guiada. Cadera atrás, espalda recta, bajá hasta media canilla.",
+   "fig": {
+    "fx": [
+     [
+      "rail",
+      84
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       54,
+       "f"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      64,
+      56
+     ],
+     "t": 62,
+     "feet": [
+      [
+       82,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       88,
+       77,
+       "b"
+      ]
+     ],
+     "h": "plate"
+    }
+   },
+   "foto": "gimnasio/fotos/smith.jpg"
+  },
+  "hip_thrust": {
+   "n": "Hip thrust en Smith",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith",
+    "banco_plano"
+   ],
+   "cue": "Parte alta de la espalda apoyada en el banco, barra sobre la cadera con una toalla. Subí la cadera hasta que el cuerpo quede recto de hombros a rodillas.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      22,
+      68,
+      79
+     ]
+    ],
+    "s": {
+     "hip": [
+      93.7,
+      91
+     ],
+     "t": -60,
+     "feet": [
+      [
+       122,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       93,
+       86,
+       "u"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      98,
+      75
+     ],
+     "t": -90,
+     "feet": [
+      [
+       122,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       98,
+       70,
+       "u"
+      ]
+     ],
+     "h": "plate"
+    }
+   },
+   "foto": "gimnasio/fotos/smith.jpg"
+  },
+  "bulgara": {
+   "n": "Sentadilla búlgara",
+   "categoria": "una_pierna",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Empeine del pie de atrás sobre el banco, pie de adelante a un paso largo. Bajá recto hasta que la rodilla de atrás casi toque el piso.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      22,
+      58,
+      76
+     ]
+    ],
+    "s": {
+     "hip": [
+      74,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       92,
+       100,
+       "f"
+      ],
+      [
+       46,
+       75,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       76,
+       54,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      72,
+      70
+     ],
+     "t": 8,
+     "feet": [
+      [
+       92,
+       100,
+       "f"
+      ],
+      [
+       46,
+       75,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       76,
+       72,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   },
+   "por_lado": "pierna"
+  },
+  "zancada": {
+   "n": "Zancada atrás con mancuernas",
+   "categoria": "una_pierna",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Desde parado, dá un paso largo hacia atrás y bajá hasta casi tocar el piso con la rodilla. Volvé empujando con la pierna de adelante.",
+   "fig": {
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       54,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      76,
+      72
+     ],
+     "t": 5,
+     "feet": [
+      [
+       94,
+       100,
+       "f"
+      ],
+      [
+       44,
+       99,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       74,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   },
+   "por_lado": "pierna"
+  },
+  "stepup": {
+   "n": "Step-up con mancuernas",
+   "categoria": "una_pierna",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Pie entero sobre el banco o step. Subí empujando con esa pierna sin impulsarte con la de abajo, y bajá controlado.",
+   "fig": {
+    "vb": [
+     0,
+     -18,
+     160,
+     128
+    ],
+    "fx": [
+     [
+      "box",
+      94,
+      128,
+      80
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      58
+     ],
+     "t": 5,
+     "feet": [
+      [
+       104,
+       80,
+       "u"
+      ],
+      [
+       72,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       60,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      104,
+      32
+     ],
+     "t": 0,
+     "feet": [
+      [
+       106,
+       80,
+       "f"
+      ],
+      [
+       98,
+       62,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       106,
+       34,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   },
+   "por_lado": "pierna"
+  },
+  "remo_db": {
+   "n": "Remo a una mano con mancuerna",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Rodilla y mano del mismo lado sobre el banco, espalda plana. Llevá la mancuerna hacia la cadera con el codo pegado al cuerpo.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      62,
+      124,
+      75
+     ]
+    ],
+    "s": {
+     "hip": [
+      72,
+      49
+     ],
+     "t": 90,
+     "feet": [
+      [
+       52,
+       73,
+       "d",
+       -6
+      ],
+      [
+       56,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       112,
+       72,
+       "f"
+      ],
+      [
+       104,
+       84,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      72,
+      49
+     ],
+     "t": 90,
+     "feet": [
+      [
+       52,
+       73,
+       "d",
+       -6
+      ],
+      [
+       56,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       112,
+       72,
+       "f"
+      ],
+      [
+       94,
+       58,
+       "u"
+      ]
+     ],
+     "h": "db"
+    }
+   },
+   "por_lado": "lado"
+  },
+  "remo_pecho": {
+   "n": "Remo con pecho apoyado",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_regulable"
+   ],
+   "cue": "Boca abajo en el banco inclinado (unos 30°), una mancuerna en cada mano. Llevá los codos hacia atrás apretando los omóplatos.",
+   "fig": {
+    "fx": [
+     [
+      "incl",
+      50,
+      86,
+      104,
+      56
+     ]
+    ],
+    "s": {
+     "hip": [
+      56,
+      76
+     ],
+     "t": 60,
+     "feet": [
+      [
+       36,
+       100,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       86,
+       92,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      56,
+      76
+     ],
+     "t": 60,
+     "feet": [
+      [
+       36,
+       100,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       74,
+       66,
+       "u"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "remo_barra": {
+   "n": "Remo inclinado con barra",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "barra"
+   ],
+   "cue": "Torso inclinado unos 45°, espalda recta. Llevá la barra al ombligo y bajala controlado.",
+   "fig": {
+    "s": {
+     "hip": [
+      64,
+      56
+     ],
+     "t": 58,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       92,
+       82,
+       "f"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      64,
+      56
+     ],
+     "t": 58,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       78,
+       62,
+       "b"
+      ]
+     ],
+     "h": "plate"
+    }
+   }
+  },
+  "remo_polea1": {
+   "n": "Remo en polea a una mano",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "Polea a la altura del pecho, de pie con un pie adelante. Tirá el agarre hacia la costilla con el codo cerca del cuerpo.",
+   "fig": {
+    "fx": [
+     [
+      "tower",
+      140,
+      30
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 8,
+     "feet": [
+      [
+       70,
+       100,
+       "f"
+      ],
+      [
+       94,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       116,
+       32,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      30
+     ]
+    },
+    "e": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       70,
+       100,
+       "f"
+      ],
+      [
+       94,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       78,
+       36,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      30
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/polea.jpg",
+   "por_lado": "lado"
+  },
+  "remo_baja": {
+   "n": "Remo sentado en polea baja",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "polea",
+    "step"
+   ],
+   "cue": "Sentado en el step con los pies apoyados. Tirá hacia el abdomen con el pecho alto, sin balancearte.",
+   "fig": {
+    "fx": [
+     [
+      "tower",
+      140,
+      92
+     ],
+     [
+      "seat",
+      46,
+      72,
+      86
+     ]
+    ],
+    "s": {
+     "hip": [
+      60,
+      84
+     ],
+     "t": 25,
+     "feet": [
+      [
+       106,
+       98,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       106,
+       76,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      92
+     ]
+    },
+    "e": {
+     "hip": [
+      60,
+      84
+     ],
+     "t": -5,
+     "feet": [
+      [
+       106,
+       98,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       78,
+       70,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      92
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/polea.jpg"
+  },
+  "face_pull": {
+   "n": "Face pull en polea",
+   "categoria": "tiron",
+   "tipo": "aislamiento",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "Polea alta con cuerda. Tirá hacia la cara separando las manos y con los codos altos.",
+   "fig": {
+    "fx": [
+     [
+      "tower",
+      140,
+      14
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": -4,
+     "feet": [
+      [
+       70,
+       100,
+       "f"
+      ],
+      [
+       94,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       110,
+       18,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      14
+     ]
+    },
+    "e": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": -6,
+     "feet": [
+      [
+       70,
+       100,
+       "f"
+      ],
+      [
+       94,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       86,
+       10,
+       "b"
+      ]
+     ],
+     "cable": [
+      140,
+      14
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/polea.jpg"
+  },
+  "pallof": {
+   "n": "Pallof press en polea",
+   "categoria": "core_brazos",
+   "tipo": "core",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "De costado a la polea, agarre en el pecho. Estirá los brazos al frente sin dejar que el cuerpo gire, aguantá 2 s y volvé.",
+   "front": "pallof",
+   "foto": "gimnasio/fotos/polea.jpg",
+   "por_lado": "lado"
+  },
+  "triceps_polea": {
+   "n": "Extensión de tríceps en polea",
+   "categoria": "core_brazos",
+   "tipo": "aislamiento",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "Polea alta con cuerda o barra corta. Codos pegados al costado; empujá hacia abajo hasta estirar.",
+   "fig": {
+    "fx": [
+     [
+      "tower",
+      140,
+      6
+     ]
+    ],
+    "s": {
+     "hip": [
+      82,
+      52
+     ],
+     "t": 8,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       100,
+       32,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      6
+     ]
+    },
+    "e": {
+     "hip": [
+      82,
+      52
+     ],
+     "t": 8,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       94,
+       58,
+       "b"
+      ]
+     ],
+     "cable": [
+      140,
+      6
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/polea.jpg"
+  },
+  "dominadas": {
+   "n": "Dominadas",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "estacion_dominadas_fondos"
+   ],
+   "cue": "Colgate de la barra con las palmas hacia adelante. Subí hasta pasar el mentón por encima y bajá lento. Si no llegás a 6, hacé jalón en máquina.",
+   "fig": {
+    "floor": false,
+    "fx": [
+     [
+      "bar",
+      62,
+      98,
+      20,
+      1
+     ]
+    ],
+    "s": {
+     "hip": [
+      80,
+      86
+     ],
+     "t": 0,
+     "feet": [
+      [
+       68,
+       104,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       20,
+       "f"
+      ]
+     ]
+    },
+    "e": {
+     "hip": [
+      80,
+      58
+     ],
+     "t": 0,
+     "feet": [
+      [
+       68,
+       78,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       20,
+       "f"
+      ]
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/estacion-dominadas-fondos.jpg"
+  },
+  "fondos": {
+   "n": "Fondos en paralelas",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "estacion_dominadas_fondos"
+   ],
+   "cue": "Brazos estirados sobre las barras. Bajá hasta que el codo forme unos 90° con el torso un poco inclinado, y subí. Si no llegás a 6, usá la máquina de tríceps.",
+   "fig": {
+    "fx": [
+     [
+      "bar",
+      62,
+      100,
+      54,
+      0
+     ]
+    ],
+    "s": {
+     "hip": [
+      80,
+      52
+     ],
+     "t": 4,
+     "feet": [
+      [
+       66,
+       76,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       54,
+       "b"
+      ]
+     ]
+    },
+    "e": {
+     "hip": [
+      74,
+      70
+     ],
+     "t": 12,
+     "feet": [
+      [
+       60,
+       94,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       54,
+       "b"
+      ]
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/estacion-dominadas-fondos.jpg"
+  },
+  "press_db_plano": {
+   "n": "Press plano con mancuernas",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Acostado, pies en el piso. Bajá las mancuernas a la altura del pecho con los codos a unos 45° y empujá hacia arriba.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      34,
+      116,
+      71
+     ]
+    ],
+    "s": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       54,
+       58,
+       "d"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       52,
+       33,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "press_smith_plano": {
+   "n": "Press de banca en Smith",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith",
+    "banco_plano"
+   ],
+   "cue": "Banco plano dentro del Smith, barra sobre la mitad del pecho. Bajala tocando suave el pecho y empujá.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      34,
+      116,
+      71
+     ],
+     [
+      "rail",
+      50
+     ]
+    ],
+    "s": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       54,
+       58,
+       "d"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       52,
+       33,
+       "f"
+      ]
+     ],
+     "h": "plate"
+    }
+   },
+   "foto": "gimnasio/fotos/smith.jpg"
+  },
+  "press_db_incl": {
+   "n": "Press inclinado con mancuernas",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_regulable"
+   ],
+   "cue": "Banco regulable a unos 30°. Bajá las mancuernas a la parte alta del pecho y empujá hacia arriba.",
+   "fig": {
+    "fx": [
+     [
+      "incl",
+      94,
+      74,
+      50,
+      49
+     ],
+     [
+      "seat",
+      84,
+      104,
+      72
+     ]
+    ],
+    "s": {
+     "hip": [
+      88,
+      68
+     ],
+     "t": -60,
+     "feet": [
+      [
+       120,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       64,
+       47,
+       "d"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      88,
+      68
+     ],
+     "t": -60,
+     "feet": [
+      [
+       120,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       62,
+       20,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "press_smith_incl": {
+   "n": "Press inclinado en Smith",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith",
+    "banco_regulable"
+   ],
+   "cue": "Banco regulable a 30° dentro del Smith. La barra baja a la parte alta del pecho.",
+   "fig": {
+    "fx": [
+     [
+      "incl",
+      94,
+      74,
+      50,
+      49
+     ],
+     [
+      "seat",
+      84,
+      104,
+      72
+     ],
+     [
+      "rail",
+      58
+     ]
+    ],
+    "s": {
+     "hip": [
+      88,
+      68
+     ],
+     "t": -60,
+     "feet": [
+      [
+       120,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       64,
+       47,
+       "d"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      88,
+      68
+     ],
+     "t": -60,
+     "feet": [
+      [
+       120,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       62,
+       20,
+       "f"
+      ]
+     ],
+     "h": "plate"
+    }
+   },
+   "foto": "gimnasio/fotos/smith.jpg"
+  },
+  "press_hombro_db": {
+   "n": "Press de hombro con mancuernas",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_regulable"
+   ],
+   "cue": "Sentado con el respaldo vertical. Mancuernas a la altura de las orejas; empujá hacia arriba sin arquear la espalda.",
+   "fig": {
+    "vb": [
+     0,
+     -14,
+     160,
+     124
+    ],
+    "fx": [
+     [
+      "seat",
+      64,
+      94,
+      72
+     ],
+     [
+      "back",
+      66,
+      30,
+      72
+     ]
+    ],
+    "s": {
+     "hip": [
+      76,
+      68
+     ],
+     "t": 0,
+     "feet": [
+      [
+       106,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       84,
+       34,
+       "d"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      76,
+      68
+     ],
+     "t": 0,
+     "feet": [
+      [
+       106,
+       100,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       80,
+       4,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "pullover": {
+   "n": "Pullover con mancuerna",
+   "categoria": "tiron",
+   "tipo": "aislamiento",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Acostado, la mancuerna sostenida con las dos manos sobre el pecho. Llevala hacia atrás de la cabeza con los codos apenas flexionados y volvé.",
+   "fig": {
+    "fx": [
+     [
+      "bench",
+      34,
+      116,
+      71
+     ]
+    ],
+    "s": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       22,
+       64,
+       "u"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      84,
+      66
+     ],
+     "t": -90,
+     "feet": [
+      [
+       120,
+       99,
+       "u"
+      ]
+     ],
+     "hands": [
+      [
+       54,
+       34,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "lateral": {
+   "n": "Elevaciones laterales",
+   "categoria": "core_brazos",
+   "tipo": "aislamiento",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "De pie, mancuernas livianas al costado. Subilas hacia los costados hasta la altura de los hombros, con los codos apenas flexionados.",
+   "front": "lat"
+  },
+  "curl_ez": {
+   "n": "Curl con barra EZ",
+   "categoria": "core_brazos",
+   "tipo": "aislamiento",
+   "equipo": [
+    "barra_ez"
+   ],
+   "cue": "De pie, codos pegados al cuerpo. Subí la barra sin balancearte y bajala en 2 s.",
+   "fig": {
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       53,
+       "b"
+      ]
+     ],
+     "h": "plate"
+    },
+    "e": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       90,
+       25,
+       "d"
+      ]
+     ],
+     "h": "plate"
+    }
+   }
+  },
+  "plancha": {
+   "n": "Plancha",
+   "categoria": "core_brazos",
+   "tipo": "core",
+   "equipo": [],
+   "cue": "Antebrazos en el piso, codos bajo los hombros. Cuerpo recto de cabeza a talones, abdomen y glúteos apretados.",
+   "fig": {
+    "e": {
+     "hip": [
+      84,
+      86
+     ],
+     "t": -83,
+     "feet": [
+      [
+       130,
+       98,
+       "d",
+       3
+      ]
+     ],
+     "hands": [
+      [
+       36,
+       99,
+       "d"
+      ]
+     ]
+    }
+   },
+   "rx": {
+    "unidad": "s",
+    "min": 30,
+    "max": 45
+   }
+  },
+  "heels_up": {
+   "n": "Sentadilla con talones elevados",
+   "categoria": "sentadilla",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "discos"
+   ],
+   "cue": "Talones sobre un disco o cuña de 2–3 cm, una mancuerna en cada mano al costado. Bajá con el torso erguido, dejando que las rodillas pasen la punta de los pies.",
+   "fig": {
+    "fx": [
+     [
+      "box",
+      72,
+      88,
+      95
+     ]
+    ],
+    "s": {
+     "hip": [
+      78,
+      47
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       95,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       78,
+       62,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      66,
+      72
+     ],
+     "t": 14,
+     "feet": [
+      [
+       80,
+       95,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       70,
+       80,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "rdl_db": {
+   "n": "Peso muerto rumano con mancuernas",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Mancuernas frente a los muslos, rodillas apenas flexionadas. Cadera hacia atrás con la espalda recta hasta sentir el estiramiento atrás del muslo, y volvé apretando glúteos.",
+   "fig": {
+    "s": {
+     "hip": [
+      78,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       80,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       82,
+       54,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      64,
+      56
+     ],
+     "t": 62,
+     "feet": [
+      [
+       82,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       88,
+       80,
+       "b"
+      ]
+     ],
+     "h": "db"
+    }
+   }
+  },
+  "farmer": {
+   "n": "Farmer carry",
+   "categoria": "core_brazos",
+   "tipo": "cargada",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Una mancuerna pesada en cada mano, hombros atrás y abdomen firme. Caminá con pasos cortos sin inclinarte; si no hay lugar, marcha lenta en el lugar con rodillas altas.",
+   "fig": {
+    "s": {
+     "hip": [
+      60,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       60,
+       100,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       62,
+       72,
+       "f"
+      ]
+     ],
+     "h": "db"
+    },
+    "e": {
+     "hip": [
+      104,
+      52
+     ],
+     "t": 0,
+     "feet": [
+      [
+       96,
+       100,
+       "f"
+      ],
+      [
+       118,
+       82,
+       "f"
+      ]
+     ],
+     "hands": [
+      [
+       106,
+       72,
+       "f"
+      ]
+     ],
+     "h": "db"
+    }
+   },
+   "rx": {
+    "unidad": "s",
+    "min": 40,
+    "max": 40
+   }
+  },
+  "deadbug": {
+   "n": "Dead bug",
+   "categoria": "core_brazos",
+   "tipo": "core",
+   "equipo": [],
+   "cue": "Boca arriba, brazos al techo y rodillas a 90° sobre la cadera. Bajá un brazo y la pierna contraria hasta casi tocar el piso sin despegar la zona lumbar, y alterná.",
+   "fig": {
+    "s": {
+     "hip": [
+      96,
+      94
+     ],
+     "t": -90,
+     "feet": [
+      [
+       118,
+       72,
+       "u",
+       4
+      ]
+     ],
+     "hands": [
+      [
+       66,
+       66,
+       "d"
+      ]
+     ]
+    },
+    "e": {
+     "hip": [
+      96,
+      94
+     ],
+     "t": -90,
+     "feet": [
+      [
+       142,
+       90,
+       "u",
+       4
+      ]
+     ],
+     "hands": [
+      [
+       42,
+       92,
+       "d"
+      ]
+     ]
+    }
+   },
+   "por_lado": "lado"
+  },
+  "press_pecho": {
+   "n": "Press de pecho",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "maquina_press_pecho"
+   ],
+   "cue": "Asiento a una altura en que las manijas queden a mitad del pecho. Empujá sin trabar los codos y volvé en 2 s.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-press-pecho.jpg"
+  },
+  "press_hombro": {
+   "n": "Press de hombro",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [
+    "maquina_press_hombro"
+   ],
+   "cue": "Manijas a la altura de los hombros. Empujá hacia arriba sin despegar la espalda del respaldo.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-press-hombro.jpg"
+  },
+  "jalon": {
+   "n": "Jalón al pecho",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "maquina_jalon"
+   ],
+   "cue": "Rodillas trabadas bajo el rodillo. Bajá las manijas hacia el pecho llevando los codos hacia abajo y atrás.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-jalon.jpg"
+  },
+  "jalon_pausa": {
+   "n": "Jalón con pausa",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "maquina_jalon"
+   ],
+   "cue": "Igual que el jalón, pero aguantás 2 s abajo apretando la espalda y subís en 3 s.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-jalon.jpg"
+  },
+  "jalon_1brazo": {
+   "n": "Jalón a un brazo en polea alta",
+   "categoria": "tiron",
+   "tipo": "compuesto",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "Arrodillado frente a la polea alta. Bajá el agarre hacia el costado del pecho con el codo pegado al cuerpo.",
+   "fig": {
+    "fx": [
+     [
+      "tower",
+      140,
+      6
+     ]
+    ],
+    "s": {
+     "hip": [
+      88,
+      72
+     ],
+     "t": 4,
+     "feet": [
+      [
+       64,
+       98,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       106,
+       8,
+       "d"
+      ]
+     ],
+     "cable": [
+      140,
+      6
+     ]
+    },
+    "e": {
+     "hip": [
+      88,
+      72
+     ],
+     "t": -4,
+     "feet": [
+      [
+       64,
+       98,
+       "d",
+       -6
+      ]
+     ],
+     "hands": [
+      [
+       94,
+       40,
+       "b"
+      ]
+     ],
+     "cable": [
+      140,
+      6
+     ]
+    }
+   },
+   "foto": "gimnasio/fotos/polea.jpg",
+   "por_lado": "lado"
+  },
+  "curl_fem": {
+   "n": "Curl femoral sentado",
+   "categoria": "bisagra",
+   "tipo": "aislamiento",
+   "equipo": [
+    "maquina_curl_femoral"
+   ],
+   "cue": "Rodilla alineada con el eje de la máquina. Llevá los talones hacia abajo y atrás, y volvé lento.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-curl-femoral.jpg"
+  },
+  "ext_cuad": {
+   "n": "Extensión de cuádriceps",
+   "categoria": "sentadilla",
+   "tipo": "aislamiento",
+   "equipo": [
+    "maquina_extension_cuadriceps"
+   ],
+   "cue": "Rodilla alineada con el eje. Extendé hasta casi estirar y bajá en 2–3 s.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-extension-cuadriceps.jpg"
+  },
+  "curl_maq": {
+   "n": "Curl de bíceps",
+   "categoria": "core_brazos",
+   "tipo": "aislamiento",
+   "equipo": [
+    "maquina_curl_biceps"
+   ],
+   "cue": "Brazos apoyados sobre el pad inclinado. Subí sin despegar los codos.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-curl-biceps.jpg"
+  },
+  "triceps_maq": {
+   "n": "Tríceps",
+   "categoria": "core_brazos",
+   "tipo": "aislamiento",
+   "equipo": [
+    "maquina_triceps"
+   ],
+   "cue": "Codos fijos en el apoyo; empujá hasta estirar y volvé controlado.",
+   "machine": 1,
+   "foto": "gimnasio/fotos/maquina-triceps.jpg"
+  },
+  "box_squat_db": {
+   "n": "Sentadilla al banco con mancuerna",
+   "categoria": "sentadilla",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Mancuerna contra el pecho, banco atrás. Bajá controlado hasta apenas tocar el banco con la cola, sin sentarte del todo, y subí."
+  },
+  "kickstand_rdl": {
+   "n": "Peso muerto rumano con apoyo (kickstand)",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Casi todo el peso en una pierna; la otra apoya solo la punta un poco atrás. Cadera hacia atrás con la espalda recta y volvé apretando el glúteo.",
+   "por_lado": "pierna"
+  },
+  "hip_thrust_db": {
+   "n": "Hip thrust con mancuerna",
+   "categoria": "bisagra",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas",
+    "banco_plano"
+   ],
+   "cue": "Parte alta de la espalda en el banco, mancuerna sobre la cadera. Subí hasta quedar recto de hombros a rodillas y aguantá 1 s arriba."
+  },
+  "split_smith": {
+   "n": "Sentadilla dividida en Smith",
+   "categoria": "una_pierna",
+   "tipo": "compuesto",
+   "equipo": [
+    "smith"
+   ],
+   "cue": "Un pie adelante y otro atrás, barra sobre la parte alta de la espalda. Bajá recto hasta que la rodilla de atrás casi toque el piso.",
+   "por_lado": "pierna"
+  },
+  "zancada_caminando": {
+   "n": "Zancadas caminando con mancuernas",
+   "categoria": "una_pierna",
+   "tipo": "compuesto",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Pasos largos hacia adelante, bajando hasta casi tocar el piso con la rodilla de atrás. Si no hay lugar, alterná en el sitio.",
+   "por_lado": "pierna"
+  },
+  "flexiones": {
+   "n": "Flexiones de brazos",
+   "categoria": "empuje",
+   "tipo": "compuesto",
+   "equipo": [],
+   "cue": "Manos apenas más anchas que los hombros, cuerpo recto. Bajá el pecho hasta casi tocar el piso con los codos a unos 45°."
+  },
+  "suitcase": {
+   "n": "Suitcase carry",
+   "categoria": "core_brazos",
+   "tipo": "cargada",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Una sola mancuerna pesada de un lado. Caminá derecho sin inclinarte hacia el peso; si no hay lugar, marcha lenta en el lugar.",
+   "por_lado": "lado",
+   "rx": {
+    "unidad": "s",
+    "min": 30,
+    "max": 30
+   }
+  },
+  "crunch_polea": {
+   "n": "Crunch en polea",
+   "categoria": "core_brazos",
+   "tipo": "core",
+   "equipo": [
+    "polea"
+   ],
+   "cue": "Arrodillado frente a la polea alta, cuerda a los costados de la cabeza. Enrollá el tronco llevando los codos hacia las rodillas, sin tirar con los brazos."
+  },
+  "rodillas_colgado": {
+   "n": "Elevación de rodillas colgado",
+   "categoria": "core_brazos",
+   "tipo": "core",
+   "equipo": [
+    "estacion_dominadas_fondos"
+   ],
+   "cue": "Colgado de la barra, subí las rodillas hasta la altura de la cadera sin balancearte y bajá lento."
+  },
+  "rear_delt_fly": {
+   "n": "Vuelos posteriores con mancuernas",
+   "categoria": "tiron",
+   "tipo": "aislamiento",
+   "equipo": [
+    "mancuernas"
+   ],
+   "cue": "Torso inclinado, mancuernas livianas. Abrí los brazos hacia los costados con los codos apenas flexionados, apretando atrás del hombro."
+  }
+ }
+}

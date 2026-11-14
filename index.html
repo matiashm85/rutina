@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Rutina Full Body</title>
+<meta name="theme-color" content="#15191c">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<main id="v"><p class="nota">Cargando…</p></main>
+<div id="toast" hidden role="status"></div>
+<div id="timer" hidden role="timer" aria-label="Descanso">
+  <span class="tl" id="tl">Descanso</span><b id="tt">0:00</b>
+  <button type="button" data-a="t-mas">+15 s</button>
+  <button type="button" data-a="t-fin">Saltar</button>
+</div>
+<nav id="tabs" aria-label="Secciones">
+  <a href="#hoy" data-tab="hoy">Hoy</a>
+  <a href="#progreso" data-tab="progreso">Progreso</a>
+  <a href="#rutina" data-tab="rutina">Rutina</a>
+  <a href="#ajustes" data-tab="ajustes">Ajustes</a>
+</nav>
+<dialog id="dlg"></dialog>
+<script type="module" src="app.js"></script>
+</body>
+</html>
