@@ -1,6 +1,6 @@
 /* Service worker: deja la app disponible sin conexión.
    Subir VERSION cada vez que cambian los archivos para que los celulares tomen la versión nueva. */
-const VERSION = 'rfb-2';
+const VERSION = 'rfb-3';
 const ARCHIVOS = [
   './', 'index.html', 'app.css', 'app.js', 'figuras.js', 'rutina.json', 'manifest.webmanifest',
   'icon-192.png', 'icon-512.png', 'icon-maskable-512.png',

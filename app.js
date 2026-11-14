@@ -181,7 +181,7 @@ function exCard(it, d, sig) {
     ${u ? `<div class="ult">Última (${corta(u.fecha)}): ${esc(fmtSets(u.sets, it.unidad))}</div>` : '<div class="ult">Primera vez: elegí un peso que te deje 1–2 repeticiones en reserva.</div>'}
     ${u?.consejo ? `<span class="sube">${esc(u.consejo)}</span>` : ''}</div></div>
     <div class="sets">${rows}</div>
-    <details class="cue"><summary>Cómo se hace</summary><p>${esc(x.cue)}</p></details></article>`;
+    <details class="cue"><summary>Cómo se hace</summary><p>${esc(x.cue)}</p><a class="vid" href="https://www.youtube.com/results?search_query=${encodeURIComponent(`cómo hacer ${x.n}${x.machine ? " en máquina" : ""} técnica`)}" target="_blank" rel="noopener">Ver videos en YouTube ↗</a></details></article>`;
 }
 function vEntrenar(k) {
   const S = ses()[k];

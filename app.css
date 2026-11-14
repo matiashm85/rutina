@@ -102,6 +102,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,su
 .ult{font-size:13px;color:var(--muted);margin-top:4px}
 .sube{display:inline-block;margin-top:6px;font-size:13px;font-weight:600;color:var(--chip-ink);background:var(--ok);padding:3px 8px;border-radius:4px}
 details.cue summary{font-size:13px;color:var(--accent);cursor:pointer;padding:4px 0}
+details.cue .vid{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:500}
 details.cue p{font-size:14px;color:var(--muted);padding-top:4px}
 .sets{display:flex;flex-direction:column;gap:6px}
 .set{display:grid;grid-template-columns:22px 1fr 1fr 52px;gap:8px;align-items:center;padding:4px;border-radius:8px;scroll-margin:120px 0 200px}
