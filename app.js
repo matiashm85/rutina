@@ -26,7 +26,6 @@ const diasEntre = (a, b) => Math.round((Date.UTC(b.getFullYear(), b.getMonth(), 
 const corta = s => { const d = deIso(s); return `${d.getDate()}/${d.getMonth() + 1}`; };
 const conDia = s => `${DIAS[deIso(s).getDay()].slice(0, 3)} ${corta(s)}`;
 const mmss = s => { s = Math.max(0, Math.ceil(s)); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
-const semCardio = d => { const n = Math.floor(diasEntre(new Date(2024, 0, 1), lunes(d)) / 7); return ((n + (st.ajustes.cardioSwap ? 1 : 0)) % 2) + 1; };
 const semCiclo = () => st.ciclo.inicio ? Math.floor(diasEntre(lunes(deIso(st.ciclo.inicio)), lunes(new Date())) / 7) + 1 : 0;
 
 /* ---------- Rutina ---------- */
@@ -41,15 +40,11 @@ const items = k => bloques(k).flatMap((b, bi) => b.map(it => ({ ...it, bi, opc: 
 const fmtRx = it => `${it.series} × ${it.min === it.max ? it.min : it.min + '–' + it.max}${it.unidad === 's' ? ' s' : ''}${it.por_lado ? (it.por_lado === 'pierna' ? ' c/p' : ' c/l') : ''}`;
 const totalCardio = v => v.seg.reduce((a, s) => a + s[0], 0);
 
-function plan(d) {
-  const dia = DIAS[d.getDay()];
-  const k = Object.keys(ses()).find(k => ses()[k].dia === dia);
-  if (k) return { tipo: 'fuerza', k };
-  const w = semCardio(d), C = DATA.cardio_largo;
-  const c = Object.keys(C).find(c => C[c].day === dia && C[c].w === w);
-  return c ? { tipo: 'cardio', k: c } : { tipo: 'descanso' };
-}
-const hecho = (fecha, k) => st.logs.some(l => l.fecha === fecha && l.sesion === k);
+const LARGOS = ['T1', 'S1', 'T2', 'S2'];
+const ultimoDe = f => { for (let i = st.logs.length - 1; i >= 0; i--) if (f(st.logs[i])) return st.logs[i]; return null; };
+function proxFuerza() { const ks = Object.keys(ses()), u = ultimoDe(l => l.tipo === 'fuerza'), i = u ? ks.indexOf(u.sesion) : -1; return ks[(i + 1) % ks.length]; }
+function proxCardio() { const u = ultimoDe(l => l.tipo === 'cardio' && LARGOS.includes(l.sesion)), i = u ? LARGOS.indexOf(u.sesion) : -1; return LARGOS[(i + 1) % LARGOS.length]; }
+const elipticaHecha = l => l.eliptica || st.logs.some(x => x.tipo === 'cardio' && x.sesion === 'Z15' && x.fecha === l.fecha);
 
 const fcmax = () => st.ajustes.fcmax || 220 - st.ajustes.edad;
 function zona(z) {
@@ -131,37 +126,31 @@ function perfil(v, marcador) {
 function listaSesion(k) {
   return `<ul class="lista">${items(k).map(it => `<li><span class="code">${it.codigo}</span><span>${esc(lib(it.ejercicio).n)}</span><span class="rx">${fmtRx(it)}</span></li>`).join('')}</ul>`;
 }
-function tarjetaPlan(p, fecha) {
-  if (p.tipo === 'descanso') return `<section class="card plan"><span class="eyebrow">Hoy</span><h3>Descanso</h3><p class="nota">Caminar o estirar si querés. Si te quedó una sesión pendiente no la recuperes: seguí con la que toca.</p></section>`;
-  const ok = hecho(fecha, p.k);
-  if (p.tipo === 'fuerza') {
-    const enCurso = st.draft?.sesion === p.k;
-    return `<section class="card plan"><span class="eyebrow">Hoy · unos 35 min + 15 de elíptica</span><h3>Fuerza ${p.k}</h3>${listaSesion(p.k)}
-    <div class="fila fin">${ok ? '<span class="hecha">Hecha hoy</span>' : '<span></span>'}<a class="btn pri" href="#entrenar/${p.k}">${enCurso ? 'Continuar' : ok ? 'Repetir' : 'Empezar'}</a></div></section>`;
-  }
-  const v = DATA.cardio_largo[p.k];
-  return `<section class="card plan"><span class="eyebrow">Hoy · cardio largo · ${totalCardio(v)} min</span><h3>${esc(v.name)}</h3>${perfil(v)}
-  <p class="nota"><b>${esc(v.equip)}.</b> ${esc(v.desc)}</p>
-  <div class="fila fin">${ok ? '<span class="hecha">Hecho hoy</span>' : '<span></span>'}<a class="btn pri" href="#cardio/${p.k}">${st.cardio?.key === p.k ? 'Continuar' : ok ? 'Repetir' : 'Empezar'}</a></div></section>`;
-}
 function vHoy() {
-  const hoy = new Date(), f = iso(hoy), p = plan(hoy), n = semCiclo();
+  const hoy = new Date(), f = iso(hoy), n = semCiclo(), C = DATA.cardio_largo;
+  const k = st.draft?.sesion || proxFuerza(), otras = Object.keys(ses()).filter(x => x !== k);
+  const hoyF = st.logs.filter(l => l.fecha === f && l.tipo === 'fuerza');
   let h = `<header class="top"><span class="eyebrow">${n ? `Ciclo actual · semana ${n}` : 'Rutina Full Body · 6 patrones'}</span><h1>${DIAS[hoy.getDay()]} ${hoy.getDate()} de ${MESES[hoy.getMonth()]}</h1></header>`;
-  if (st.draft && !(p.tipo === 'fuerza' && p.k === st.draft.sesion)) h += `<section class="card aviso"><p>Tenés la sesión <b>Fuerza ${st.draft.sesion}</b> sin terminar.</p><a class="btn" href="#entrenar/${st.draft.sesion}">Continuar</a></section>`;
-  if (st.cardio && !(p.tipo === 'cardio' && p.k === st.cardio.key)) h += `<section class="card aviso"><p>Tenés un cardio en curso.</p><a class="btn" href="#cardio/${st.cardio.key}">Volver al cardio</a></section>`;
+  if (st.cardio) h += `<section class="card aviso"><p>Tenés <b>${esc(C[st.cardio.key].name)}</b> en curso.</p><a class="btn" href="#cardio/${st.cardio.key}">Volver al cardio</a></section>`;
   if (n >= 8) h += `<section class="card aviso"><p>${n > 12 ? 'Pasaron más de 12 semanas con los mismos ejercicios: toca rotar.' : `Vas por la semana ${n}: entre la 8 y la 12 conviene rotar ejercicios.`}</p><a class="btn" href="#rutina">Ver rutina</a></section>`;
-  h += tarjetaPlan(p, f);
-  h += '<h2>Esta semana</h2><div class="semana">';
-  const l = lunes(hoy);
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(l); d.setDate(l.getDate() + i);
-    const q = plan(d), fd = iso(d), ok = q.tipo !== 'descanso' && hecho(fd, q.k);
-    const lbl = q.tipo === 'fuerza' ? `Fuerza ${q.k}` : q.tipo === 'cardio' ? `Cardio · ${DATA.cardio_largo[q.k].name}` : 'Descanso';
-    const href = q.tipo === 'fuerza' ? `#entrenar/${q.k}` : q.tipo === 'cardio' ? `#cardio/${q.k}` : '';
-    const tag = href ? `a href="${href}"` : 'div';
-    h += `<${tag} class="dia ${fd === f ? 'hoy' : ''} ${q.tipo}"><span class="dn">${DIAS[d.getDay()].slice(0, 3)} ${d.getDate()}</span><span>${esc(lbl)}</span><span class="de">${ok ? 'Hecha' : ''}</span></${href ? 'a' : 'div'}>`;
-  }
-  return h + '</div>';
+  const pend = !st.draft && hoyF.find(l => !elipticaHecha(l));
+  if (pend) h += `<section class="card aviso"><p>Hoy hiciste <b>Fuerza ${pend.sesion}</b>. Te falta la elíptica de 15 min.</p><div class="fila"><button type="button" class="pri" data-a="e-ini">Empezar elíptica</button><button type="button" data-a="e-hecha" data-id="${pend.id}">Ya la hice</button></div></section>`;
+  h += `<section class="card plan"><span class="eyebrow">${st.draft ? 'Sesión en curso' : hoyF.length ? 'La próxima fuerza' : 'Fuerza · unos 35 min + 15 de elíptica'}</span><h3>Fuerza ${k}</h3>${listaSesion(k)}
+    <a class="btn pri" href="#entrenar/${k}">${st.draft ? 'Continuar' : 'Empezar Fuerza ' + k}</a>
+    ${st.draft ? '' : `<div class="fila"><span class="nota">O hacer otra:</span>${otras.map(o => `<a class="btn sec" href="#entrenar/${o}">Fuerza ${o}</a>`).join('')}</div>`}</section>`;
+  const c = proxCardio(), v = C[c];
+  h += `<section class="card plan"><span class="eyebrow">Cardio largo · opcional · ${totalCardio(v)} min</span><h3>${esc(v.name)}</h3>${perfil(v)}
+    <p class="nota">Si la semana te lo permite, sumá un día de cardio largo. <b>${esc(v.equip)}.</b> ${esc(v.desc)}</p>
+    <a class="btn" href="#cardio/${c}">Empezar ${esc(v.name)}</a>
+    <div class="fila"><span class="nota">O elegir otro:</span>${LARGOS.filter(x => x !== c).map(o => `<a class="btn sec" href="#cardio/${o}">${esc(C[o].name)}</a>`).join('')}</div></section>`;
+  const a = iso(lunes(hoy)), sem = st.logs.filter(l => l.fecha >= a);
+  const nf = sem.filter(l => l.tipo === 'fuerza').length, nl = sem.filter(l => l.tipo === 'cardio' && LARGOS.includes(l.sesion)).length;
+  const min = sem.reduce((s, l) => s + (l.tipo === 'cardio' ? l.min : l.eliptica ? 15 : 0), 0);
+  h += `<h2>Esta semana</h2><section class="card"><div class="fila fin"><span>Días de fuerza</span><b class="num">${nf} de 3</b></div><div class="fila fin"><span>Cardio largo</span><b class="num">${nl}</b></div><div class="fila fin"><span>Cardio en total</span><b class="num">${min} min</b></div>`;
+  if (!sem.length) h += '<p class="nota">Todavía no entrenaste esta semana. El método pide 2 o 3 días de fuerza, los que puedas.</p>';
+  h += '</section>';
+  if (sem.length) h += `<div class="semana">${sem.map(l => `<div class="dia"><span class="dn">${DIAS[deIso(l.fecha).getDay()].slice(0, 3)} ${deIso(l.fecha).getDate()}</span><span>${l.tipo === 'fuerza' ? `Fuerza ${l.sesion}${l.eliptica ? ' + elíptica' : ''}` : esc(C[l.sesion]?.name || 'Cardio')}</span><span class="de">${l.min} min</span></div>`).join('')}</div>`;
+  return h;
 }
 
 /* ---------- Vista: Entrenar ---------- */
@@ -200,13 +189,13 @@ function vEntrenar(k) {
   if (st.draft && st.draft.sesion !== k) return `<header class="top"><a class="back" href="#hoy">‹ Hoy</a><h1>Fuerza ${k}</h1></header>
     <section class="card aviso"><p>Tenés la sesión <b>Fuerza ${st.draft.sesion}</b> sin terminar. Terminala o descartala antes de empezar otra.</p>
     <div class="fila"><a class="btn pri" href="#entrenar/${st.draft.sesion}">Ir a Fuerza ${st.draft.sesion}</a><button type="button" class="peligro" data-a="descartar" data-k="${k}">Descartarla</button></div></section>`;
-  const d = st.draft, sig = siguiente(k), z2 = zona(2).lpm;
-  let h = `<header class="top"><a class="back" href="#hoy">‹ Hoy</a><span class="eyebrow">${S.dia} · descanso de ${st.ajustes.descanso} s entre vueltas</span><h1>Fuerza ${k}</h1></header>
+  const d = st.draft, sig = siguiente(k);
+  let h = `<header class="top"><a class="back" href="#hoy">‹ Hoy</a><span class="eyebrow">Descanso de ${st.ajustes.descanso} s entre vueltas</span><h1>Fuerza ${k}</h1></header>
   <p class="nota">Calentamiento: 4 min de elíptica suave y una serie liviana del primer ejercicio. En cada bloque alternás los dos ejercicios; el descanso arranca solo al completar la vuelta.</p>`;
   bloques(k).forEach((b, bi) => {
     h += `<section class="bloque" data-k="${k}"><h2>Bloque ${'ABCD'[bi]}<small>${esOpc(k, bi) ? 'opcional · unos 5 min' : `superserie · ${b[0].series} vueltas`}</small></h2>${b.map(it => exCard(it, d, sig)).join('')}</section>`;
   });
-  h += `<section class="card" data-k="${k}"><label class="check"><input type="checkbox" data-a="eliptica" ${d?.eliptica ? 'checked' : ''}><span>Al terminar: 15 min de elíptica en zona 2 (${z2})</span></label>
+  h += `<section class="card" data-k="${k}"><p class="nota">Al guardar te ofrece los 15 min de elíptica en zona 2 con temporizador.</p>
   <button type="button" class="pri ancho" data-a="terminar" data-k="${k}">Terminar y guardar</button>
   ${d ? `<button type="button" class="peligro ancho" data-a="descartar" data-k="${k}">Descartar sesión</button>` : ''}</section>`;
   return h;
@@ -250,7 +239,8 @@ function vResumen(id) {
   return `<header class="top"><span class="eyebrow">${conDia(l.fecha)} · ${l.min} min${l.eliptica ? ' + 15 de elíptica' : ''}</span><h1>Fuerza ${l.sesion} guardada</h1></header>
   ${subir.length ? `<section class="card"><h3>Para la próxima</h3>${subir.map(e => `<p><b>${esc(lib(e.id)?.n || e.id)}:</b> ${esc(consejo(e.sets, e).replace(/^[^:]+: /, ''))}.</p>`).join('')}</section>` : ''}
   <section class="card"><h3>Lo que hiciste</h3>${l.ejercicios.map(e => `<div class="fila fin"><span>${esc(lib(e.id)?.n || e.id)}</span><span class="num nota">${esc(fmtSets(e.sets, e.unidad))}</span></div>`).join('') || '<p class="nota">Solo elíptica.</p>'}</section>
-  <a class="btn pri" href="#hoy">Listo</a>`;
+  ${elipticaHecha(l) ? '<a class="btn pri" href="#hoy">Listo</a>' : `<section class="card"><h3>Elíptica · 15 min</h3><p class="nota">Zona 2 (${zona(2).lpm}): ritmo cómodo, podés conversar.</p>
+    <button type="button" class="pri" data-a="e-ini">Empezar elíptica</button><button type="button" data-a="e-hecha" data-id="${l.id}">Ya la hice</button><a class="btn" href="#hoy">Hoy no</a></section>`}`;
 }
 
 /* ---------- Vista: Cardio ---------- */
@@ -259,7 +249,7 @@ function vCardio(key) {
   if (!v) return vHoy();
   if (st.cardio && st.cardio.key !== key) { location.replace('#cardio/' + st.cardio.key); return ''; }
   const d = st.cardio;
-  let h = `<header class="top"><a class="back" href="#hoy">‹ Hoy</a><span class="eyebrow">${v.day} · semana ${v.w} · ${totalCardio(v)} min</span><h1>${esc(v.name)}</h1></header>`;
+  let h = `<header class="top"><a class="back" href="#hoy">‹ Hoy</a><span class="eyebrow">${key === 'Z15' ? 'Después de la fuerza' : 'Cardio largo'} · ${totalCardio(v)} min</span><h1>${esc(v.name)}</h1></header>`;
   if (d) h += `<div class="ahora z1" id="cnow" data-k="${key}"><span id="cz"></span><b id="ct">0:00</b><span id="cl"></span></div><p class="nota" id="cnext"></p>`;
   h += `<section class="card">${perfil(v, !!d)}${d ? '<p class="nota num" id="ctot"></p>' : ''}<p class="nota"><b>${esc(v.equip)}.</b> ${esc(v.desc)}</p></section>`;
   if (d) h += `<div class="fila"><button type="button" class="pri" data-a="c-pausa">${d.pausa ? 'Reanudar' : 'Pausar'}</button><button type="button" data-a="c-fin">Terminar antes</button><button type="button" class="peligro" data-a="c-desc">Descartar</button></div>`;
@@ -340,7 +330,7 @@ function volumen() {
   return `<div class="fila fin"><button type="button" class="sec" data-a="sem" data-d="-1" aria-label="Semana anterior">‹</button><span class="eyebrow">Semana del ${corta(a)} al ${corta(b)}</span><button type="button" class="sec" data-a="sem" data-d="1" ${selSem >= 0 ? 'disabled' : ''} aria-label="Semana siguiente">›</button></div>
   <div class="vol">${Object.entries(PATRONES).map(([p, n]) => `<span>${n}</span><div class="pista"><div class="barra" style="width:${(hechas[p] || 0) / max * 100}%"></div><div class="meta" style="left:calc(${(meta[p] || 0) / max * 100}% - 1px)"></div></div><span class="val">${hechas[p] || 0} / ${meta[p] || 0}</span>`).join('')}</div>
   <div class="leyenda"><span><i style="width:16px;height:10px;background:var(--accent);border-radius:0 3px 3px 0"></i>series hechas</span><span><i style="width:2px;height:14px;background:var(--ink)"></i>series planificadas</span></div>
-  <p class="nota">Cardio en la semana: <b class="num">${cardio} min</b> (el plan da 140–145).</p>`;
+  <p class="nota">Cardio en la semana: <b class="num">${cardio} min</b>.</p>`;
 }
 function vProgreso() {
   const fuerza = st.logs.filter(l => l.tipo === 'fuerza');
@@ -397,7 +387,7 @@ function vRutina() {
   let h = `<header class="top"><span class="eyebrow">${n ? `Ciclo iniciado el ${corta(st.ciclo.inicio)} · semana ${n}` : 'El ciclo arranca con tu primera sesión'}</span><h1>Rutina</h1></header>
   <p class="nota">Mantené los mismos ejercicios 8–12 semanas y después rotalos por otros del mismo patrón. La rotación solo usa equipos que hay en tu gimnasio.</p>`;
   for (const k of Object.keys(ses())) {
-    h += `<section class="card"><h3>Fuerza ${k} · ${ses()[k].dia}</h3><div>`;
+    h += `<section class="card"><h3>Fuerza ${k}</h3><div>`;
     bloques(k).forEach((b, bi) => {
       h += `<div class="sep">Bloque ${'ABCD'[bi]}${esOpc(k, bi) ? ' · opcional' : ''}</div>` + b.map(it => `<div class="slot"><span class="code">${it.codigo}</span><span>${esc(lib(it.ejercicio).n)}<small>${PATRONES[it.patron]} · ${fmtRx(it)}</small></span><button type="button" class="sec" data-a="cambiar" data-k="${k}" data-c="${it.codigo}">Cambiar</button></div>`).join('');
     });
@@ -437,7 +427,7 @@ const enCurso = () => { if (st.draft) { toast('Terminá o descartá la sesión e
 
 /* ---------- Vista: Ajustes ---------- */
 function vAjustes() {
-  const a = st.ajustes, hoy = new Date();
+  const a = st.ajustes;
   return `<header class="top"><span class="eyebrow">Los datos se guardan solo en este celular</span><h1>Ajustes</h1></header>
   <section class="card"><h3>Entrenamiento</h3>
     <div class="campo-l">Descanso entre vueltas<div class="seg">${[60, 75, 90].map(s => `<button type="button" data-a="descanso" data-v="${s}" class="${a.descanso === s ? 'on' : ''}">${s} s</button>`).join('')}</div></div>
@@ -447,7 +437,6 @@ function vAjustes() {
     <label class="campo-l">Edad<input class="campo" type="number" inputmode="numeric" min="15" max="90" data-s="edad" value="${a.edad}"></label>
     <label class="campo-l">FC máxima medida (opcional)<input class="campo" type="number" inputmode="numeric" min="120" max="220" data-s="fcmax" value="${a.fcmax ?? ''}" placeholder="${220 - a.edad} estimada por edad"></label>
     <p class="nota">Zona 2: <b class="num">${zona(2).lpm}</b> · Fuerte: <b class="num">${zona(4).lpm}</b>. La estimación por edad puede variar ±10 lpm; guiate también por la sensación.</p>
-    <div class="fila fin"><span>Esta semana toca el cardio de la <b>semana ${semCardio(hoy)}</b></span><button type="button" class="sec" data-a="swap">Cambiar a la ${semCardio(hoy) === 1 ? 2 : 1}</button></div>
   </section>
   <section class="card"><h3>Respaldo</h3>
     <p class="nota">Si se borran los datos del navegador o cambiás de celular, los registros se pierden. Exportá un respaldo cada tanto${st.respaldo ? ` (último: ${corta(st.respaldo)})` : ''}.</p>
@@ -479,6 +468,8 @@ const A = {
   descartar: b => { if (confirm('¿Descartar la sesión en curso? Se pierden las series marcadas.')) { st.draft = null; st.timerEnd = null; guardar(); render(); tick(); } },
   't-mas': () => { if (st.timerEnd) { st.timerEnd = Math.max(st.timerEnd, Date.now()) + 15000; sono = false; guardar(); tick(); } },
   't-fin': () => pararDescanso(),
+  'e-ini': () => { if (st.cardio && st.cardio.key !== 'Z15') { toast('Ya tenés un cardio en curso'); return; } st.cardio ??= { key: 'Z15', inicio: Date.now(), pausa: null }; segPrev = null; guardar(); location.hash = '#cardio/Z15'; },
+  'e-hecha': b => { const l = st.logs.find(l => l.id === b.dataset.id); if (l) { l.eliptica = true; guardar(); render(); } },
   'c-ini': b => { st.cardio = { key: b.dataset.k, inicio: Date.now(), pausa: null }; segPrev = null; guardar(); render(); },
   'c-pausa': () => { const d = st.cardio; if (d.pausa) { d.inicio += Date.now() - d.pausa; d.pausa = null; } else d.pausa = Date.now(); guardar(); render(); },
   'c-fin': () => { const d = st.cardio, min = Math.round(((d.pausa ?? Date.now()) - d.inicio) / 6e4); if (min < 1) { toast('Todavía no pasó ni un minuto'); return; } if (confirm(`¿Terminar ahora y guardar ${min} min?`)) finCardio(min); },
@@ -493,7 +484,6 @@ const A = {
   original: () => { if (!enCurso() && confirm('¿Volver a los ejercicios originales de la rutina?')) { st.ciclo.sesiones = null; guardar(); render(); } },
   cerrar: () => $('#dlg').close(),
   descanso: b => { st.ajustes.descanso = +b.dataset.v; guardar(); render(); },
-  swap: () => { st.ajustes.cardioSwap = !st.ajustes.cardioSwap; guardar(); render(); },
   exportar,
   'borrar-todo': () => { if (confirm('Se borran todas las sesiones, la rutina modificada y los ajustes de este celular. No se puede deshacer. ¿Borrar?')) { localStorage.removeItem(KEY); cargar(); tick(); location.hash = '#hoy'; render(); } },
 };
@@ -542,6 +532,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
   cargar();
   try { DATA = await (await fetch('rutina.json')).json(); }
   catch { $('#v').innerHTML = '<p class="nota">No se pudo cargar la rutina. Abrí la app una vez con conexión.</p>'; return; }
+  DATA.cardio_largo.Z15 = { name: 'Elíptica en zona 2', equip: 'Elíptica', seg: [[15, 2]], desc: 'Ritmo constante y cómodo después de la fuerza.' };
   // si la rutina guardada referencia ejercicios que ya no existen, vuelve a la original
   if (st.ciclo.sesiones && !Object.values(st.ciclo.sesiones).every(s => [...s.superseries.flat(), ...(s.opcional || [])].every(it => lib(it.ejercicio)))) st.ciclo.sesiones = null;
   if (st.draft && !ses()[st.draft.sesion]) st.draft = null;

@@ -1,8 +1,8 @@
 # Rutina Full Body
 
-App web instalable para seguir una rutina de fuerza de cuerpo completo (6 patrones, 3 días por semana) y el cardio de la semana.
+App web instalable para seguir una rutina de fuerza de cuerpo completo (6 patrones, 2 o 3 días por semana, sin días fijos) y el cardio de la semana.
 
-- **Hoy:** la sesión que toca según el día.
+- **Hoy:** la próxima sesión de fuerza por rotación (A, B, C), para hacerla el día que quieras, y un cardio largo opcional.
 - **Entrenar:** peso y repeticiones por serie, descanso automático entre vueltas y aviso de subir peso.
 - **Cardio:** guía por tramos con zona, pulsaciones y cuenta regresiva.
 - **Progreso:** gráfico por ejercicio, volumen semanal por patrón e historial.
