@@ -6,7 +6,7 @@ App web instalable para seguir una rutina de fuerza de cuerpo completo (6 patron
 - **Entrenar:** carga y repeticiones por serie, descanso automático entre vueltas, aviso de subir la carga, récords personales, nota fija por ejercicio y nota de la sesión.
 - **Cargas por equipo:** cada ejercicio se registra en kilos, libras o número de placa, según lo que muestre la máquina. No se convierte entre unidades.
 - **Cardio:** guía por tramos con zona, pulsaciones y cuenta regresiva.
-- **Progreso:** gráfico por ejercicio, constancia de las últimas 12 semanas, volumen semanal por patrón e historial con energía, sueño y ánimo (opcionales).
+- **Progreso:** gráfico por ejercicio, volumen semanal por patrón e historial.
 - **Rutina:** cambio de ejercicios y rotación completa con el equipo disponible.
 
 Funciona sin conexión y guarda los registros solo en el dispositivo (`localStorage`). No tiene servidor, cuentas ni dependencias: son archivos estáticos.

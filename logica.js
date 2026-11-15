@@ -75,33 +75,8 @@ export function records(log, previos) {
   return out;
 }
 
-/* ---------- Rotación y constancia ---------- */
+/* ---------- Rotación ---------- */
 export const sigRot = (orden, ultimo) => orden[(orden.indexOf(ultimo) + 1) % orden.length];
-const minCardio = l => l.tipo === 'cardio' ? l.min : l.eliptica ? 15 : 0;
-/* Últimas n semanas (de lunes a domingo), de la más vieja a la actual. */
-export function semanas(logs, descansos, hoy, n = 12, largos = []) {
-  const l0 = lunes(hoy), out = [];
-  for (let i = n - 1; i >= 0; i--) {
-    const a = new Date(l0); a.setDate(l0.getDate() - i * 7);
-    const b = new Date(a); b.setDate(a.getDate() + 6);
-    const ia = iso(a), ib = iso(b), en = logs.filter(l => l.fecha >= ia && l.fecha <= ib);
-    out.push({
-      desde: ia,
-      fuerza: new Set(en.filter(l => l.tipo === 'fuerza').map(l => l.fecha)).size,
-      cardio: en.reduce((s, l) => s + minCardio(l), 0),
-      largos: en.filter(l => l.tipo === 'cardio' && largos.includes(l.sesion)).length,
-      descansos: descansos.filter(f => f >= ia && f <= ib).length,
-    });
-  }
-  return out;
-}
-/* Días desde la última actividad registrada (sesión o descanso marcado); null si no hay nada. */
-export function diasSinActividad(logs, descansos, hoy) {
-  const fechas = [...logs.map(l => l.fecha), ...descansos];
-  if (!fechas.length) return null;
-  return diasEntre(deIso(fechas.reduce((a, b) => a > b ? a : b)), hoy);
-}
-
 /* ---------- Exportar a planilla ---------- */
 const celda = v => {
   let s = v == null ? '' : String(v);
@@ -110,13 +85,12 @@ const celda = v => {
 };
 /* Una fila por serie de fuerza y una por sesión de cardio. Separador ; y coma decimal, como espera una planilla en español. */
 export function csv(logs, nombreEj = id => id, nombreCardio = id => id) {
-  const filas = [['fecha', 'tipo', 'sesion', 'ejercicio', 'serie', 'carga', 'unidad_carga', 'repeticiones_o_segundos', 'medida', 'minutos', 'energia', 'sueno', 'animo', 'nota']];
+  const filas = [['fecha', 'tipo', 'sesion', 'ejercicio', 'serie', 'carga', 'unidad_carga', 'repeticiones_o_segundos', 'medida', 'minutos', 'nota']];
   const dec = v => v == null ? '' : String(v).replace('.', ',');
   for (const l of logs) {
-    const b = l.bien || {};
-    if (l.tipo === 'cardio') { filas.push([l.fecha, 'cardio', nombreCardio(l.sesion), '', '', '', '', '', '', l.min, '', '', '', l.nota || '']); continue; }
-    if (!l.ejercicios.length) filas.push([l.fecha, 'fuerza', l.sesion, '', '', '', '', '', '', l.min, b.energia, b.sueno, b.animo, l.nota || '']);
-    for (const e of l.ejercicios) e.sets.forEach((s, i) => filas.push([l.fecha, 'fuerza', l.sesion, nombreEj(e.id), i + 1, dec(s.kg), s.kg == null ? '' : UNIDADES[e.u || 'kg'].t, s.reps, e.unidad === 's' ? 'segundos' : 'repeticiones', l.min, b.energia, b.sueno, b.animo, l.nota || '']));
+    if (l.tipo === 'cardio') { filas.push([l.fecha, 'cardio', nombreCardio(l.sesion), '', '', '', '', '', '', l.min, l.nota || '']); continue; }
+    if (!l.ejercicios.length) filas.push([l.fecha, 'fuerza', l.sesion, '', '', '', '', '', '', l.min, l.nota || '']);
+    for (const e of l.ejercicios) e.sets.forEach((s, i) => filas.push([l.fecha, 'fuerza', l.sesion, nombreEj(e.id), i + 1, dec(s.kg), s.kg == null ? '' : UNIDADES[e.u || 'kg'].t, s.reps, e.unidad === 's' ? 'segundos' : 'repeticiones', l.min, l.nota || '']));
   }
   return '﻿' + filas.map(f => f.map(celda).join(';')).join('\r\n') + '\r\n';
 }

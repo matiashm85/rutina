@@ -161,12 +161,8 @@ dialog .op small{display:block;font:12px var(--f-mono);color:var(--muted);font-w
 .seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 @media (prefers-reduced-motion:no-preference){.set.sig{transition:background .2s}}
 
-/* Notas, unidades y bienestar */
+/* Notas y unidades */
 textarea.campo{height:auto;min-height:72px;padding:10px 12px;line-height:1.4;resize:vertical}
 input.nota-ej{height:42px;font-size:14px;font-weight:400;background:var(--bg)}
 button.uni{align-self:flex-start;min-height:36px;font-size:13px;color:var(--muted)}
 button:disabled{opacity:.45;cursor:default}
-.bien{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:15px}
-.seg5{display:grid;grid-template-columns:repeat(5,44px);gap:4px}
-.seg5 button{min-height:44px;padding:0;font:500 16px var(--f-mono)}
-.seg5 button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}

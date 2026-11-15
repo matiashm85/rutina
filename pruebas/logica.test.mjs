@@ -1,7 +1,7 @@
 // Correr desde app/:  node --test pruebas/logica.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { iso, deIso, lunes, diasEntre, fmtRx, fmtSets, fmtPeso, sigUnidad, validar, completo, consejo, metrica, mejorMarca, records, sigRot, semanas, diasSinActividad, csv, nombreArchivo } from '../logica.js';
+import { iso, deIso, lunes, diasEntre, fmtRx, fmtSets, fmtPeso, sigUnidad, validar, completo, consejo, metrica, mejorMarca, records, sigRot, csv, nombreArchivo } from '../logica.js';
 
 const rx = { series: 3, min: 8, max: 10, unidad: 'reps' };
 const fuerza = (fecha, sesion, ejercicios, extra = {}) => ({ id: fecha + sesion, fecha, tipo: 'fuerza', sesion, min: 35, ejercicios, ...extra });
@@ -76,29 +76,15 @@ test('rotación: sigue con la próxima y arranca por la primera', () => {
   assert.equal(sigRot(['A', 'B', 'C'], 'C'), 'A');
 });
 
-test('constancia semanal y días sin actividad', () => {
-  const logs = [
-    fuerza('2026-11-02', 'A', []), fuerza('2026-11-04', 'B', [], { eliptica: true }),
-    { id: 'c', fecha: '2026-11-07', tipo: 'cardio', sesion: 'T1', min: 45 },
-    fuerza('2026-11-10', 'C', []),
-  ];
-  const S = semanas(logs, ['2026-11-12'], deIso('2026-11-15'), 3, ['T1']);
-  assert.deepEqual(S.map(s => s.desde), ['2026-10-26', '2026-11-02', '2026-11-09']);
-  assert.deepEqual(S[1], { desde: '2026-11-02', fuerza: 2, cardio: 60, largos: 1, descansos: 0 });
-  assert.deepEqual(S[2], { desde: '2026-11-09', fuerza: 1, cardio: 0, largos: 0, descansos: 1 });
-  assert.equal(diasSinActividad(logs, ['2026-11-12'], deIso('2026-11-15')), 3);
-  assert.equal(diasSinActividad([], [], deIso('2026-11-15')), null);
-});
-
 test('planilla CSV: una fila por serie, coma decimal y sin fórmulas', () => {
   const out = csv([
-    fuerza('2026-11-09', 'A', [ej('sq', [{ kg: 42.5, reps: 10 }], { u: 'lb' })], { nota: '=SUMA(A1); "ojo"', bien: { energia: 4 } }),
+    fuerza('2026-11-09', 'A', [ej('sq', [{ kg: 42.5, reps: 10 }], { u: 'lb' })], { nota: '=SUMA(A1); "ojo"' }),
     { id: 'c', fecha: '2026-11-10', tipo: 'cardio', sesion: 'T1', min: 45 },
   ], id => 'Sentadilla', id => 'Zona 2');
   const filas = out.replace('﻿', '').trim().split('\r\n');
   assert.equal(filas.length, 3);
-  assert.equal(filas[1], `2026-11-09;fuerza;A;Sentadilla;1;42,5;lb;10;repeticiones;35;4;;;"'=SUMA(A1); ""ojo"""`);
-  assert.equal(filas[2], '2026-11-10;cardio;Zona 2;;;;;;;45;;;;');
+  assert.equal(filas[1], `2026-11-09;fuerza;A;Sentadilla;1;42,5;lb;10;repeticiones;35;"'=SUMA(A1); ""ojo"""`);
+  assert.equal(filas[2], '2026-11-10;cardio;Zona 2;;;;;;;45;');
 });
 
 test('nombres de archivo seguros', () => {
@@ -113,5 +99,4 @@ test('camino completo: registrar dos sesiones y ver sugerencia, récord y rotaci
   assert.equal(s2.sesion, 'B');
   assert.deepEqual(records(s2, [s1]), ['sq']);                           // 42,5 × 8 supera a 40 × 10
   assert.equal(consejo(s2.ejercicios[0].sets, rx), null);                // con el peso nuevo todavía no llegó al tope
-  assert.equal(semanas([s1, s2], [], deIso('2026-11-15'), 1)[0].fuerza, 2);
 });
