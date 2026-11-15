@@ -119,7 +119,7 @@ details.cue p{font-size:14px;color:var(--muted);padding-top:4px}
 .check input{width:24px;height:24px;flex:none;accent-color:var(--ok)}
 
 /* Progreso */
-select,input.campo{font:500 16px var(--f-body);height:48px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);padding:0 12px;width:100%}
+select,input.campo,textarea.campo{font:500 16px var(--f-body);height:48px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);padding:0 12px;width:100%}
 .chart svg{width:100%;height:auto;display:block;overflow:visible}
 .chart text{font:10px var(--f-mono);fill:var(--muted)}
 .chart .hit{fill:transparent;cursor:pointer}
@@ -160,3 +160,13 @@ dialog .op small{display:block;font:12px var(--f-mono);color:var(--muted);font-w
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 @media (prefers-reduced-motion:no-preference){.set.sig{transition:background .2s}}
+
+/* Notas, unidades y bienestar */
+textarea.campo{height:auto;min-height:72px;padding:10px 12px;line-height:1.4;resize:vertical}
+input.nota-ej{height:42px;font-size:14px;font-weight:400;background:var(--bg)}
+button.uni{align-self:flex-start;min-height:36px;font-size:13px;color:var(--muted)}
+button:disabled{opacity:.45;cursor:default}
+.bien{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:15px}
+.seg5{display:grid;grid-template-columns:repeat(5,44px);gap:4px}
+.seg5 button{min-height:44px;padding:0;font:500 16px var(--f-mono)}
+.seg5 button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
